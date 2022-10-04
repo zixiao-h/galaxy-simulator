@@ -1,2 +1,2 @@
 # galaxy-simulator
-N-body simulator and animator, using <T>numba</T> to achieve 1000x speedup compared to raw python
+N-body simulator and animator, using <TT>numba</TT> to achieve 1000x speedup compared to raw python
