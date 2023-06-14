@@ -1,4 +1,3 @@
-from typing import NamedTuple
 import numpy as np
 import numba as nb
 import matplotlib.pyplot as plt
@@ -18,7 +17,7 @@ def verlet(timespan, dt, xv_initial, acceleration, args):
      args in the form args=(a, b, c, ...)
      """
      _, N, D = xv_initial.shape
-     Nt = np.int(timespan/dt)
+     Nt = int(timespan/dt)
      t = np.linspace(0, timespan, Nt)
      x = np.zeros((Nt, N, D))
      v = np.zeros((Nt, N, D))
@@ -50,7 +49,7 @@ def verlet_arr(timespan, dt, xv_initial, acceleration, args):
      args in the form args=(a, b, c, ...)
      """
      _, N, D = xv_initial.shape
-     Nt = np.int(timespan/dt)
+     Nt = int(timespan/dt)
      t = np.linspace(0, timespan, Nt)
      x = np.zeros((Nt, N, D))
      v = np.zeros((Nt, N, D))
@@ -107,7 +106,7 @@ def m_acc(m_x, m_M):
             if not i == j:    
                 r_x = m_x[i] - m_x[j] # Relative position
                 r = np.sqrt((r_x*r_x).sum())
-                individual_acc += -G*m_M[j]/r**3 * r_x
+                individual_acc += -G*m_M[j]/(r**3+0.03) * r_x
         acc[i] = individual_acc
     
     return acc
